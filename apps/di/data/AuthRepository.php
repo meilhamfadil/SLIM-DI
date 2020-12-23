@@ -1,11 +1,14 @@
 <?php
 
-namespace Features\Auth;
+namespace Features\Auth\Data;
 
-use Core\Base\Model;
+use Core\Register\Database;
 
-class AuthModel extends Model
+class AuthRepository
 {
+
+    /** @Inject @var Database */
+    private $db;
 
     public function getCandidate($username)
     {

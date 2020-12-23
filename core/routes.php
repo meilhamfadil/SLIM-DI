@@ -1,11 +1,24 @@
 <?php
 
-$features = glob(APPSPATH . '/features/*/*.php');
-foreach ($features as $feature)
-    if (preg_match("/Config/", $feature))
-        include $feature;
+namespace Apps\Config;
 
-$routes = RoutesRegister::getRegisteredRoute();
-foreach ($routes as $route) {
-    $route->register($app);
-}
+use Core\Register\System;
+use Psr\Http\Message\{
+    ResponseInterface as Response
+};
+use Slim\Middleware\ContentLengthMiddleware;
+
+$app = System::getInstance();
+
+$app->addRoutingMiddleware();
+$app->addBodyParsingMiddleware();
+$app->addErrorMiddleware(true, true, true);
+// $app->add(new ContentLengthMiddleware());
+
+$app->get('/', function (Response $response) {
+    $response->withStatus(403);
+    $response->getBody()->write("403 Forbidden");
+    return $response;
+});
+
+require APPSPATH . "/config/routes.php";

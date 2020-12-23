@@ -23,9 +23,9 @@ switch (ENVIRONMENT) {
         exit(1); // EXIT_ERROR
 }
 
-$applicationFolder = "apps";
-$coreFolder = "core";
-$vendorFolder = "vendor";
+$applicationFolder = __DIR__ . "/../apps";
+$coreFolder =  __DIR__ . "/../core";
+$vendorFolder =  __DIR__ . "/../vendor";
 
 define('APPSPATH', $applicationFolder);
 define('BASEPATH', $coreFolder);
