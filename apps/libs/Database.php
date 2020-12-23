@@ -1,6 +1,6 @@
 <?php
 
-namespace Core\Register;
+namespace Libs;
 
 use Buki\Pdox;
 

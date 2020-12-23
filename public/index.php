@@ -23,12 +23,13 @@ switch (ENVIRONMENT) {
         exit(1); // EXIT_ERROR
 }
 
-$applicationFolder = __DIR__ . "/../apps";
+// Declare Folder
+$appsFolder = __DIR__ . "/../apps";
 $coreFolder =  __DIR__ . "/../core";
 $vendorFolder =  __DIR__ . "/../vendor";
 
-define('APPSPATH', $applicationFolder);
-define('BASEPATH', $coreFolder);
+define('APPSPATH', $appsFolder);
+define('COREPATH', $coreFolder);
 define('VENDORPATH', $vendorFolder);
 
-require BASEPATH . "/autoload.php";
+require COREPATH . "/app.php";

@@ -1,6 +1,6 @@
 <?php
 
-use Core\Register\System;
+use Core\Register;
 use DI\Bridge\Slim\Bridge;
 
 // Require Autoload
@@ -12,16 +12,19 @@ require_once APPSPATH . "/config/constants.php";
 // Require Database
 require_once APPSPATH . "/config/database.php";
 
+// Require Loader
+require_once APPSPATH . "/config/loader.php";
+
 // Require Dependencies
-require_once BASEPATH . "/dependencies.php";
+require_once COREPATH . "/app_dependencies.php";
 
 // Init Apps
-$containerBuilder = System::getContainer();
+$containerBuilder = Register::getContainer();
 $container = $containerBuilder->build();
 $app = Bridge::create($container);
-System::register($app);
+Register::init($app);
 
 // Require Routes
-require_once BASEPATH . "/routes.php";
+require_once COREPATH . "/app_routes.php";
 
 $app->run();

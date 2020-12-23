@@ -21,13 +21,16 @@
         "laminas/laminas-diactoros": "^2.4",
         "doctrine/annotations": "^1.11",
         "darkaonline/ripcord": "^0.1.7",
-        "phpxmlrpc/phpxmlrpc": "^4.4"
+        "phpxmlrpc/phpxmlrpc": "^4.4",
+        "ocramius/proxy-manager": "^2.2"
     },
     "autoload": {
         "psr-4": {
-            "Apps\\": "apps",
-            "Data\\": "apps/data",
-            "DI\\": "apps/di",
+            "Controllers\\": "apps/controller",
+            "Datas\\": "apps/data",
+            "Middlewares\\": "apps/middleware",
+            "Libs\\": "apps/libs",
+            "DI\\": "di",
             "Core\\": "core"
         }
     }

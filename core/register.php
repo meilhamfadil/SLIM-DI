@@ -1,13 +1,12 @@
 <?php
 
-namespace Core\Register;
+namespace Core;
 
-use DI\Container;
 use DI\ContainerBuilder;
 use RuntimeException;
 use Slim\App;
 
-class System
+class Register
 {
 
     /** @var App $slim */
@@ -20,7 +19,7 @@ class System
      * @param App $app
      * @throws RuntimeException
      **/
-    public static function register(App $app)
+    public static function init(App $app)
     {
         self::$slim = $app;
     }
