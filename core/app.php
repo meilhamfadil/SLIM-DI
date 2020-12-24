@@ -12,6 +12,9 @@ require_once APPSPATH . "/config/constants.php";
 // Require Database
 require_once APPSPATH . "/config/database.php";
 
+// Require Keys
+require_once APPSPATH . "/config/keys.php";
+
 // Require Loader
 require_once APPSPATH . "/config/loader.php";
 

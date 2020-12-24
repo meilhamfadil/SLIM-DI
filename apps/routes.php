@@ -11,6 +11,8 @@ use Slim\Interfaces\RouteCollectorProxyInterface as Group;
 $app = Register::getInstance();
 
 // Initial Route
+$app->post('/getToken', [UserController::class, 'login']);
+
 $app->group('/user', function (Group $group) {
     $group->get('/get', [UserController::class, 'get']);
 });
