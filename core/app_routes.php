@@ -26,20 +26,20 @@ $app->get('/', function (Response $response) {
     return $response;
 });
 
-$customErrorHandler = function (
-    ServerRequestInterface $request,
-    Throwable $exception,
-    bool $displayErrorDetails,
-    bool $logErrors,
-    bool $logErrorDetails
-) use ($app) {
-    $payload = ['error' => $exception->getMessage()];
-    $response = $app->getResponseFactory()->createResponse();
-    $response->getBody()->write(
-        json_encode($payload, JSON_UNESCAPED_UNICODE)
-    );
-    return $response;
-};
-$errorMiddleware->setDefaultErrorHandler($customErrorHandler);
+// $customErrorHandler = function (
+//     ServerRequestInterface $request,
+//     Throwable $exception,
+//     bool $displayErrorDetails,
+//     bool $logErrors,
+//     bool $logErrorDetails
+// ) use ($app) {
+//     $payload = ['error' => $exception->getMessage()];
+//     $response = $app->getResponseFactory()->createResponse();
+//     $response->getBody()->write(
+//         json_encode($payload, JSON_UNESCAPED_UNICODE)
+//     );
+//     return $response;
+// };
+// $errorMiddleware->setDefaultErrorHandler($customErrorHandler);
 
 require APPSPATH . "/routes.php";

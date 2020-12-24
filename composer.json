@@ -30,6 +30,7 @@
             "Datas\\": "apps/data",
             "Middlewares\\": "apps/middleware",
             "Libs\\": "apps/libs",
+            "Utils\\": "apps/utils",
             "DI\\": "di",
             "Core\\": "core"
         }

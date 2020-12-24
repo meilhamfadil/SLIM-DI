@@ -8,12 +8,13 @@ use Libs\Database;
 class UserRepoImpl implements UserRepo
 {
     /** @var Database $db */
-    public $db;
+    protected $db;
 
     public function get(string $id = null)
     {
         if (is_null($id))
             return $this->db->table("user")->getAll();
+
         return $this->db->table("user")->where("id", $id)->get();
     }
 

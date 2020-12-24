@@ -16,3 +16,4 @@ $app->group('/user', function (Group $group) {
 });
 
 
+$app->add(new Hook());

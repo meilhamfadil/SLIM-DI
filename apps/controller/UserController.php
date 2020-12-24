@@ -12,11 +12,11 @@ class UserController
 {
 
     /** @Inject @var UserRepo $repo */
-    protected $repo;
+    protected $userRepo;
 
     public function get(Response $response): Response
     {
-        $payload = $this->repo->get();
+        $payload = $this->userRepo->get();
 
         $response->getBody()->write(json_encode($payload));
         return $response;
