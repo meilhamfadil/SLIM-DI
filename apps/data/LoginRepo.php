@@ -7,5 +7,5 @@ interface LoginRepo
 
     public function getCandidate($username);
 
-    public function getUser();
+    public function getUser($id = null);
 }

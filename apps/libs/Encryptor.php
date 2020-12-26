@@ -3,6 +3,7 @@
 namespace Libs;
 
 use Defuse\Crypto\Crypto;
+use Exception;
 
 class Encryptor
 {
@@ -16,6 +17,10 @@ class Encryptor
 
     public function decrypt($text)
     {
-        return Crypto::decryptWithPassword($text, $this->key);
+        try {
+            return Crypto::decryptWithPassword($text, $this->key);
+        } catch (Exception $e) {
+            return "";
+        }
     }
 }

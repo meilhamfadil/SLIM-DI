@@ -13,3 +13,5 @@ define("FAILURE", "FAILURE");
 // Payload
 define("PAYLOAD", "payload");
 define("BODY", "body");
+define("TOKEN", "token");
+define("CREDENTIAL", "credential");

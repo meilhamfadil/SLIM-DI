@@ -15,8 +15,10 @@ class Hook
     {
         $response  = $handler->handle($request);
 
+        if (!$response->hasHeader("Content-Type"))
+            $response = $response->withHeader("Content-Type", "application/json");
+
         return $response
-            ->withHeader("Content-Type", "application/json")
             ->withHeader("Timestamp", date("Y-m-d H:i:s"));
     }
 }

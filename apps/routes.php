@@ -2,8 +2,10 @@
 
 namespace Apps;
 
+use Controllers\AuthController;
 use Controllers\UserController;
 use Core\Register;
+use Middlewares\AuthMiddleware;
 use Middlewares\Hook;
 use Slim\Interfaces\RouteCollectorProxyInterface as Group;
 
@@ -11,11 +13,11 @@ use Slim\Interfaces\RouteCollectorProxyInterface as Group;
 $app = Register::getInstance();
 
 // Initial Route
-$app->post('/getToken', [UserController::class, 'login']);
+$app->post('/auth', [AuthController::class, 'auth']);
 
 $app->group('/user', function (Group $group) {
     $group->get('/get', [UserController::class, 'get']);
-});
+})->add(AuthMiddleware::class);
 
 
 $app->add(new Hook());

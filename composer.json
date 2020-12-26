@@ -23,7 +23,8 @@
         "darkaonline/ripcord": "^0.1.7",
         "phpxmlrpc/phpxmlrpc": "^4.4",
         "ocramius/proxy-manager": "^2.2",
-        "defuse/php-encryption": "^2.2"
+        "defuse/php-encryption": "^2.2",
+        "firebase/php-jwt": "^5.2"
     },
     "autoload": {
         "psr-4": {
