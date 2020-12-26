@@ -14,12 +14,10 @@ class UserController extends Controller
     /** @Inject @var UserRepo $userRepo */
     protected $userRepo;
 
-    public function get($credential, Response $response): Response
+    public function get(): Response
     {
         $payload = $this->userRepo->get();
-        return $this->success([
-            'credential' => $credential,
-            'data' => $payload
-        ]);
+
+        return $this->success($payload);
     }
 }

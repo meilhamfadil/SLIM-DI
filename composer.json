@@ -30,6 +30,7 @@
         "psr-4": {
             "Controllers\\": "apps/controller",
             "Datas\\": "apps/data",
+            "Datas\\Models\\": "apps/data/models",
             "Middlewares\\": "apps/middleware",
             "Libs\\": "apps/libs",
             "Utils\\": "apps/utils",
