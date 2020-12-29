@@ -3,28 +3,35 @@
 namespace Apps\Config;
 
 use Core\Register;
+use Libs\HttpErrorHandler;
+use Libs\ShutdownHandler;
 use Psr\Http\Message\{
     ResponseInterface as Response,
     ServerRequestInterface
 };
 use Psr\Log\LoggerInterface;
+use Slim\Factory\ServerRequestCreatorFactory;
 use Slim\Middleware\ContentLengthMiddleware;
 use Throwable;
 
 $app = Register::getInstance();
 
-$app->addRoutingMiddleware();
-$app->addBodyParsingMiddleware();
-$errorMiddleware = $app->addErrorMiddleware(true, true, true);
-
 if (ENVIRONMENT == PRODUCTION)
     $app->add(new ContentLengthMiddleware());
+$app->addRoutingMiddleware();
+$app->addBodyParsingMiddleware();
+$app->setBasePath("/api/public");
 
-$app->get('/', function (Response $response) {
-    $response->withStatus(403);
-    $response->getBody()->write("403 Forbidden");
-    return $response;
-});
+// $errorMiddleware = $app->addErrorMiddleware(true, true, true);
+
+// $callableResolver = $app->getCallableResolver();
+// $responseFactory = $app->getResponseFactory();
+
+// $serverRequestCreator = ServerRequestCreatorFactory::create();
+// $request = $serverRequestCreator->createServerRequestFromGlobals();
+
+// $errorHandler = new HttpErrorHandler($callableResolver, $responseFactory);
+// $shutdownHandler = new ShutdownHandler($request, $errorHandler, true);
 
 // $customErrorHandler = function (
 //     ServerRequestInterface $request,
@@ -41,5 +48,15 @@ $app->get('/', function (Response $response) {
 //     return $response;
 // };
 // $errorMiddleware->setDefaultErrorHandler($customErrorHandler);
+
+$app->get('/', function (Response $response) {
+    $response->withStatus(403);
+    $response->getBody()->write("403 Forbidden");
+    return $response;
+});
+
+$app->get('/info', function () {
+    phpinfo();
+});
 
 require APPSPATH . "/routes.php";
